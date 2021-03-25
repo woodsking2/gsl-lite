@@ -2672,6 +2672,7 @@ not_null<T> operator+( std::ptrdiff_t, not_null<T> const & ) gsl_is_delete;
 
 // not_null comparisons
 
+#if gsl_HAVE(TYPE_TRAITS)
 template< class T, class U >
 gsl_NODISCARD inline gsl_constexpr gsl_DECLTYPE_( bool, std::declval<T const>() == std::declval<U const>() )
 operator==( not_null<T> const & l, not_null<U> const & r )
@@ -2785,6 +2786,7 @@ operator>=( T const & l, not_null<U> const & r )
 {
     return !( l < r );
 }
+#endif // gsl_HAVE( TYPE_TRAITS )
 
 // print not_null
 
